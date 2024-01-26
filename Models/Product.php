@@ -8,6 +8,7 @@ class Product
     public $name;
     public $price;
     public $category;
+    public $imageUrl;
     /**
      * Constructs a new product
      *
@@ -16,10 +17,11 @@ class Product
      * @param float $_price The current price of the product
      * @param Category $_category The main category of this product
      */
-    public function __construct(string $_name, float $_price, Category $_category)
+    public function __construct(string $_name, float $_price, Category $_category, string $_imageUrl)
     {
         $this->name = $_name;
         $this->price = $_price;
         $this->category = $_category;
+        $this->imageUrl = $_imageUrl;
     }
 }

@@ -4,7 +4,7 @@ include_once __DIR__ . '/Models/Category.php';
 include_once __DIR__ . '/Models/Toy.php';
 
 
-$firstToy = new Toy('Chasing fake mouse', 19.99, new Category('cat', 'https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/cat-icon.png'))
+$firstToy = new Toy('Chasing fake mouse', 19.99, new Category('cat', 'https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/cat-icon.png'), 'https://cdn11.bigcommerce.com/s-asivtkjxr8/images/stencil/1280x1280/products/2115/7014/bly00acn3mrwvaiceph8__78953.1630111762.jpg?c=1')
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ $firstToy = new Toy('Chasing fake mouse', 19.99, new Category('cat', 'https://ic
             <div class="row">
                 <div class="col-3">
                     <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="<?php echo $firstToy->imageUrl ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $firstToy->name ?></h5>
                             <p class="card-text">Product type: <?php echo $firstToy->type ?></p>
