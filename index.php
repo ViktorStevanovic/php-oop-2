@@ -2,9 +2,16 @@
 include_once __DIR__ . '/Models/Product.php';
 include_once __DIR__ . '/Models/Category.php';
 include_once __DIR__ . '/Models/Toy.php';
+include_once __DIR__ . '/Models/Food.php';
+include_once __DIR__ . '/Models/Kennel.php';
 
+$products = [
+    $firstToy = new Toy('Chasing fake mouse', 19.99, new Category('cat', 'https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/cat-icon.png'), 'https://cdn11.bigcommerce.com/s-asivtkjxr8/images/stencil/1280x1280/products/2115/7014/bly00acn3mrwvaiceph8__78953.1630111762.jpg?c=1'),
 
-$firstToy = new Toy('Chasing fake mouse', 19.99, new Category('cat', 'https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/cat-icon.png'), 'https://cdn11.bigcommerce.com/s-asivtkjxr8/images/stencil/1280x1280/products/2115/7014/bly00acn3mrwvaiceph8__78953.1630111762.jpg?c=1')
+    $firstFood = new Food('Ultra protein dog food', 39.99, new Category('dog', 'https://cdn-icons-png.flaticon.com/512/5003/5003972.png'), 'https://shop.bullymax.com/cdn/shop/files/high-protein-dog-food-pitbulls-2_c50825ba-4dbf-4aeb-9c14-1f84e4ff000a.png?v=1689327104'),
+
+    $firstKennel = new Kennel('Dawg house', 89.99, new Category('dog', 'https://cdn-icons-png.flaticon.com/512/5003/5003972.png'), 'https://5.imimg.com/data5/WL/SR/MY-32219378/dog-kennel.jpg')
+];
 
 ?>
 <!DOCTYPE html>
@@ -23,26 +30,31 @@ $firstToy = new Toy('Chasing fake mouse', 19.99, new Category('cat', 'https://ic
 
 <body>
     <header>
-        <h1 class="text-center">Animal Shop</h1>
+        <section class="container">
+            <div class="row">
+                <h1 class="text-center mb-5 mt-5">Animal Shop</h1>
+            </div>
+        </section>
     </header>
     <main>
         <section class="container">
-            <div class="row">
-                <div class="col-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<?php echo $firstToy->imageUrl ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $firstToy->name ?></h5>
-                            <p class="card-text">Product type: <?php echo $firstToy->type ?></p>
-                            <div class="type-icon mb-3">
-                                <p class="card-text mb-0">Animal: <?php echo $firstToy->category->animal; ?></p>
-                                <img src="<?php echo $firstToy->category->icon; ?>" alt="">
+            <div class="row d-flex justify-content-evenly">
+                <?php foreach ($products as $product) { ?>
+                    <div class="col-4">
+                        <div class="card h-100" style="width: 100%;">
+                            <img src="<?php echo $product->imageUrl ?>" class="card-img-top" alt="...">
+                            <div class="card-body d-flex flex-column justify-content-between align-items-center">
+                                <h5 class="card-title"><?php echo $product->name ?></h5>
+                                <p class="card-text">Product type: <?php echo $product->type ?></p>
+                                <div class="type-icon mb-3">
+                                    <p class="card-text mb-0">Animal: <?php echo $product->category->animal; ?></p>
+                                    <img src="<?php echo $product->category->icon; ?>" alt="">
+                                </div>
+                                <a href="#" class="btn btn-primary">Buy for: <?php echo $product->price ?> </a>
                             </div>
-
-                            <a href="#" class="btn btn-primary">Buy for: <?php echo $firstToy->price ?> </a>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
         </section>
     </main>
